@@ -12,8 +12,8 @@ download https://github.com/IntelRealSense/librealsense/archive/v$LIBREALSENSE_V
 
 mkdir -p $PLATFORM
 cd $PLATFORM
-# mkdir -p include lib bin
-# unzip -o ../librealsense-$LIBREALSENSE_VERSION.zip
+mkdir -p include lib bin
+unzip -o ../librealsense-$LIBREALSENSE_VERSION.zip
 
 
 # if [[ $PLATFORM == windows* ]]; then
@@ -45,8 +45,8 @@ case $PLATFORM in
     #     make install
     #     ;;
     linux-x86_64)
+        patch -Np1 -d cppbuild < librealsense-$LIBREALSENSE_VERSION-linux.patch
         make -j4 examples library
-        #        make install
         cp -R lib/* ../lib/
         cp -R include/* ../include/
         cp -R bin/* ../bin/
