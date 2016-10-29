@@ -48,3 +48,5 @@
 # IntelliJ
 *.iml
 .idea
+/librealsense/target/
+/libfreenect2/target/
