@@ -50,3 +50,4 @@
 .idea
 /librealsense/target/
 /libfreenect2/target/
+/libfreenect2/test/target/
