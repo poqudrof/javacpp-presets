@@ -36,6 +36,7 @@ We can also have everything downloaded and installed automatically with:
   }
   dependencies {
     compile group: 'org.bytedeco.javacpp-presets', name: moduleName, version: moduleVersion + '-1.2'
+    compile group: 'org.bytedeco.javacpp-presets', name: moduleName, version: moduleVersion + '-1.2', classifier: platformName
   }
 ```
 
@@ -43,10 +44,10 @@ We can also have everything downloaded and installed automatically with:
 ```scala
   classpathTypes += "maven-plugin"
 
-  libraryDependencies += "org.bytedeco.javacpp-presets" % moduleName % moduleVersion + "-1.2"
+  libraryDependencies += "org.bytedeco.javacpp-presets" % moduleName % moduleVersion + "-1.2" classifier "" classifier platformName
 ```
 
-where the `moduleName` and `moduleVersion` variables correspond to the desired module. Additionally, we need to either set the `javacpp.platform` system property (via the `-D` command line option) to something like `android-arm`, or set the `javacpp.platform.dependencies` one to `true` to get all the binaries for Android, Linux, Mac OS X, and Windows. **On build systems where this does not work, we need to add the platform-specific artifacts manually.**
+where the `moduleName` and `moduleVersion` variables correspond to the desired module. Additionally, with Maven, we need to either set the `javacpp.platform` system property (via the `-D` command line option) to something like `android-arm`, or set the `javacpp.platform.dependencies` one to `true` to get all the binaries for Android, Linux, Mac OS X, and Windows. **On build systems where this does not work, we need to add the platform-specific artifacts manually.** For example, with Gradle and sbt, we would usually have the `platformName` variable take on a value such as `linux-x86_64`, `macosx-x86_64`, `windows-x86_64`, etc. Another option available for Scala users is [sbt-javacpp](https://github.com/bytedeco/sbt-javacpp).
 
 
 Required Software
@@ -114,6 +115,8 @@ Each child module in turn relies on its corresponding native libraries being alr
  * ARToolKitPlus 2.3.1  https://launchpad.net/artoolkitplus
  * Chilitags  https://github.com/chili-epfl/chilitags
  * flandmark 1.07  http://cmp.felk.cvut.cz/~uricamic/flandmark/#download
+ * HDF5 1.10.0  https://support.hdfgroup.org/HDF5/
+ * OpenBLAS 0.2.18  http://www.openblas.net/
  * FFTW 3.3.4  http://www.fftw.org/download.html
  * GSL 2.1  http://www.gnu.org/software/gsl/#downloading
  * LLVM 3.8.0  http://llvm.org/releases/download.html

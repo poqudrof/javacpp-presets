@@ -48,3 +48,10 @@
 # IntelliJ
 *.iml
 .idea
+/librealsense/target/
+/libfreenect2/target/
+/libfreenect2/test/target/
+/libfreenect2 (copie 1)/target/
+/libfreenect2 (copie 1)/test/target/
+/wlc/target/
+/wlc/test/target/

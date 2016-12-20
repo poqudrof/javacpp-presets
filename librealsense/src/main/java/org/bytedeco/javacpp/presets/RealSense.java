@@ -45,6 +45,5 @@ public class RealSense implements InfoMapper {
                 .put(new Info("std::function<void(rs::frame)>").cast().pointerTypes("Pointer"))
                 .put(new Info("std::function<void(rs::timestamp_data)>").cast().pointerTypes("Pointer"));
     }
-
     
 }
