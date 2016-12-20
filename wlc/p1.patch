@@ -1,0 +1,12 @@
+diff -Naur wlc-0.0.7/include/wlc/geometry.h wlc-0.0.7-p/include/wlc/geometry.h
+--- wlc-0.0.7/include/wlc/geometry.h	2016-10-25 21:46:35.000000000 +0200
++++ wlc-0.0.7-p/include/wlc/geometry.h	2016-12-20 13:10:22.853817655 +0100
+@@ -25,7 +25,7 @@
+ };
+ 
+ /** wlc_origin is depreacted in favor of wlc_point */
+-#define wlc_origin wlc_point __attribute__((deprecated("wlc_origin is deprecated, use wlc_point instead")))
++// #define wlc_origin wlc_point __attribute__((deprecated("wlc_origin is deprecated, use wlc_point instead")))
+ 
+ /** Fixed 2D size */
+ struct wlc_size {
