@@ -5,7 +5,7 @@ Introduction
 ------------
 This directory contains the JavaCPP Presets module for:
 
- * LLVM 3.8.0  http://llvm.org/
+ * LLVM 3.9.0  http://llvm.org/
 
 Please refer to the parent README.md file for more detailed information about the JavaCPP Presets.
 
@@ -29,21 +29,23 @@ We can use [Maven 3](http://maven.apache.org/) to download and install automatic
  $ mvn compile exec:java
 ```
 
+&lowast; In the case of Clang, we might need to disable crash recovery with the `LIBCLANG_DISABLE_CRASH_RECOVERY=1` environment variable to prevent clashes with the JVM's own signal handlers.
+
 ### The `pom.xml` build file
 ```xml
 <project>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.bytedeco.javacpp-presets.llvm</groupId>
     <artifactId>fac</artifactId>
-    <version>1.2</version>
+    <version>1.3</version>
     <properties>
         <exec.mainClass>Fac</exec.mainClass>
     </properties>
     <dependencies>
         <dependency>
             <groupId>org.bytedeco.javacpp-presets</groupId>
-            <artifactId>llvm</artifactId>
-            <version>3.8.0-1.2</version>
+            <artifactId>llvm-platform</artifactId>
+            <version>3.9.0-1.3</version>
         </dependency>
     </dependencies>
 </project>
@@ -104,16 +106,13 @@ public class Fac {
 
 
         LLVMExecutionEngineRef engine = new LLVMExecutionEngineRef();
-        LLVMModuleProviderRef provider = LLVMCreateModuleProviderForExistingModule(mod);
-        error = new BytePointer((Pointer)null);
-        if(LLVMCreateJITCompiler(engine, provider, 2, error) != 0) {
+        if(LLVMCreateJITCompilerForModule(engine, mod, 2, error) != 0) {
             System.err.println(error.getString());
             LLVMDisposeMessage(error);
             System.exit(-1);
         }
 
         LLVMPassManagerRef pass = LLVMCreatePassManager();
-        LLVMAddTargetData(LLVMGetExecutionEngineTargetData(engine), pass);
         LLVMAddConstantPropagationPass(pass);
         LLVMAddInstructionCombiningPass(pass);
         LLVMAddPromoteMemoryToRegisterPass(pass);

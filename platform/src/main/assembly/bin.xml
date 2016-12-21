@@ -4,10 +4,10 @@
   <formats>
     <format>zip</format>
   </formats>
-  <baseDirectory>${project.artifactId}-bin</baseDirectory>
+  <baseDirectory>${project.parent.artifactId}-bin</baseDirectory>
   <fileSets>
     <fileSet>
-      <directory>${project.basedir}</directory>
+      <directory>${project.parent.basedir}</directory>
       <outputDirectory>/</outputDirectory>
       <includes>
         <include>CHANGELOG*</include>

@@ -5,7 +5,7 @@ Introduction
 ------------
 This directory contains the JavaCPP Presets module for:
 
- * FFTW 3.3.4  http://www.fftw.org/
+ * FFTW 3.3.5  http://www.fftw.org/
 
 Please refer to the parent README.md file for more detailed information about the JavaCPP Presets.
 
@@ -34,15 +34,15 @@ We can use [Maven 3](http://maven.apache.org/) to download and install automatic
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.bytedeco.javacpp-presets.fftw</groupId>
     <artifactId>example</artifactId>
-    <version>1.2</version>
+    <version>1.3</version>
     <properties>
         <exec.mainClass>Example</exec.mainClass>
     </properties>
     <dependencies>
         <dependency>
             <groupId>org.bytedeco.javacpp-presets</groupId>
-            <artifactId>fftw</artifactId>
-            <version>3.3.4-1.2</version>
+            <artifactId>fftw-platform</artifactId>
+            <version>3.3.5-1.3</version>
         </dependency>
     </dependencies>
 </project>
@@ -69,7 +69,7 @@ public class Example {
     static void acquire_from_somewhere(DoublePointer signal) {
         /* Generate two sine waves of different frequencies and amplitudes. */
 
-        double[] s = new double[signal.capacity()];
+        double[] s = new double[(int)signal.capacity()];
         for (int i = 0; i < NUM_POINTS; i++) {
             double theta = (double)i / (double)NUM_POINTS * PI;
 
@@ -83,7 +83,7 @@ public class Example {
     }
 
     static void do_something_with(DoublePointer result) {
-        double[] r = new double[result.capacity()];
+        double[] r = new double[(int)result.capacity()];
         result.get(r);
         for (int i = 0; i < NUM_POINTS; i++) {
             double mag = sqrt(r[2 * i + REAL] * r[2 * i + REAL] +

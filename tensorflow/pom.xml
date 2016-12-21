@@ -6,17 +6,16 @@
   <parent>
     <groupId>org.bytedeco</groupId>
     <artifactId>javacpp-presets</artifactId>
-    <version>1.2</version>
+    <version>1.3</version>
   </parent>
 
   <groupId>org.bytedeco.javacpp-presets</groupId>
   <artifactId>tensorflow</artifactId>
   <version>${tensorflow.version}-${project.parent.version}</version>
-  <packaging>jar</packaging>
   <name>JavaCPP Presets for TensorFlow</name>
 
   <properties>
-    <tensorflow.version>0.8.0</tensorflow.version>
+    <tensorflow.version>0.11.0</tensorflow.version>
   </properties>
 
   <dependencies>
@@ -46,13 +45,12 @@
             <includePath>${basedir}/cppbuild/${javacpp.platform}/tensorflow-${tensorflow.version}/</includePath>
             <includePath>${basedir}/cppbuild/${javacpp.platform}/tensorflow-${tensorflow.version}/bazel-genfiles/</includePath>
             <includePath>${basedir}/cppbuild/${javacpp.platform}/tensorflow-${tensorflow.version}/bazel-tensorflow-${tensorflow.version}/</includePath>
-            <includePath>${basedir}/cppbuild/${javacpp.platform}/tensorflow-${tensorflow.version}/google/protobuf/src/</includePath>
-            <includePath>${basedir}/cppbuild/${javacpp.platform}/tensorflow-${tensorflow.version}/third_party/eigen3/</includePath>
+            <includePath>${basedir}/cppbuild/${javacpp.platform}/tensorflow-${tensorflow.version}/bazel-tensorflow-${tensorflow.version}/external/protobuf/src/</includePath>
             <includePath>${basedir}/cppbuild/${javacpp.platform}/tensorflow-${tensorflow.version}/bazel-tensorflow-${tensorflow.version}/external/eigen_archive/</includePath>
-            <includePath>${basedir}/cppbuild/${javacpp.platform}/tensorflow-${tensorflow.version}/bazel-tensorflow-${tensorflow.version}/external/eigen_archive/eigen-eigen-3f653ace7d28/</includePath>
+            <includePath>${basedir}/cppbuild/${javacpp.platform}/tensorflow-${tensorflow.version}/bazel-tensorflow-${tensorflow.version}/external/eigen_archive/eigen-eigen-d02e6a705c30/</includePath>
           </includePaths>
           <linkPaths>
-             <linkPath>${basedir}/cppbuild/${javacpp.platform}/tensorflow-${tensorflow.version}/bazel-bin/tensorflow/cc/</linkPath>
+             <linkPath>${basedir}/cppbuild/${javacpp.platform}/tensorflow-${tensorflow.version}/bazel-bin/tensorflow/</linkPath>
           </linkPaths>
         </configuration>
       </plugin>
