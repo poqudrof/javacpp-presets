@@ -10,9 +10,10 @@
   </parent>
 
   <groupId>org.bytedeco.javacpp-presets</groupId>
-  <artifactId>hdf5</artifactId>
-  <version>1.10.0-patch1-${project.parent.version}</version>
-  <name>JavaCPP Presets for HDF5</name>
+  <artifactId>libfreenect2</artifactId>
+  <version>0.2.0-${project.parent.version}</version>
+  <packaging>jar</packaging>
+  <name>JavaCPP Presets for libfreenect2</name>
 
   <properties>
     <javacpp.platform.oldcompiler>${javacpp.platform.compiler}</javacpp.platform.oldcompiler>
