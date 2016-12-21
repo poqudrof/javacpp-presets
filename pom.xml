@@ -50,6 +50,7 @@
     <module>flandmark</module>
     <module>fftw</module>
     <module>gsl</module>
+    <module>wlc</module>
     <module>llvm</module>
     <module>leptonica</module>
     <module>tesseract</module>
