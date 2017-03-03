@@ -6,6 +6,7 @@ package org.bytedeco.javacpp.presets;
 import org.bytedeco.javacpp.FunctionPointer;
 import org.bytedeco.javacpp.Loader;
 import org.bytedeco.javacpp.Pointer;
+import org.bytedeco.javacpp.annotation.Cast;
 import org.bytedeco.javacpp.annotation.Namespace;
 //import org.bytedeco.javacpp.RealSense.context;
 //import org.bytedeco.javacpp.RealSense.device;
@@ -36,14 +37,27 @@ public class RealSense implements InfoMapper {
     public void map(InfoMap infoMap) {
 
         infoMap.put(new Info("std::runtime_error").cast().pointerTypes("Pointer"))
-                .put(new Info("log_severity").cast().valueTypes("int").pointerTypes("IntPointer"))
                 .put(new Info("std::timed_mutex").cast().pointerTypes("Pointer"))
                 .put(new Info("rs_device::start_fw_logger").virtualize())
                 .put(new Info("rs_device::stop_wf_logger").virtualize())
-                .put(new Info("std::function<void()>").cast().pointerTypes("Fn"))
-                .put(new Info("std::function<void(rs::motion_data)>").cast().pointerTypes("Pointer"))
+                
+//                .put(new Info("std::function<void()>").cast().pointerTypes("Fn"))
+                .put(new Info("log_severity").valueTypes("int"))
+                .put(new Info("std::function<void(rs::log_severity>").cast().pointerTypes("Pointer"))
+                
+//                .put(new Info("std::function<void(rs::motion_data)>").cast().pointerTypes("MotionDataFunction"))
+                .put(new Info("motion_data_fuction").cast().pointerTypes("Pointer"))
                 .put(new Info("std::function<void(rs::frame)>").cast().pointerTypes("Pointer"))
                 .put(new Info("std::function<void(rs::timestamp_data)>").cast().pointerTypes("Pointer"));
     }
     
+    
+//    public static class MotionDataFunction extends FunctionPointer {
+//        static { Loader.load(); }
+//        /** Pointer cast constructor. Invokes {@link Pointer#Pointer(Pointer)}. */
+//        public    MotionDataFunction(Pointer p) { super(p); }
+//        protected MotionDataFunction() { allocate(); }
+//        private native void allocate();        
+//        public native @Cast("void") boolean call(@Cast("rs::motion_data") Pointer motion_data);
+//    }
 }
